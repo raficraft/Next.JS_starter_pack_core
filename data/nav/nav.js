@@ -5,7 +5,7 @@ import {
   WaterOutline,
   AccountCircle,
   Home_icon,
-} from "../../assets/icons/Icon_svg";
+} from "../../public/assets/icons/Icon_svg";
 
 export const nav = [
   {

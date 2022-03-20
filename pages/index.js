@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Index_content from "./Index_content";
+import Navigation from "../engine/component/navigation/Navigation";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <main className="mainContent">
         <section className="content">
           <h1>NEXt.JS Starter Pack</h1>
-          <Index_content></Index_content>
+          <Navigation></Navigation>
         </section>
       </main>
     </>
