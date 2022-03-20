@@ -7,11 +7,13 @@ import { ModalContext } from "../../context/modal/ModalProvider";
 import { useRouter } from "next/router";
 import { ArrowDown } from "../../../public/assets/icons/Icon_svg";
 
-export default function Navigation({ css }) {
-  const S = css;
+import Std from "./Nav_top.module.scss";
+import M from "./Nav_mobil.module.scss";
+
+export default function Navigation({ css = "top" }) {
+  const S = css === "isMobil" ? M : Std;
 
   const router = useRouter();
-
   function getCurrentPath() {
     //URL "/categories/produtcs"  return "categories" for define the currentPath/item of page if this link have a child element (nested)
     const path = router.pathname.split("/");
@@ -26,7 +28,7 @@ export default function Navigation({ css }) {
         <Nav_item
           item={item}
           key={key}
-          css={css}
+          css={S}
           currentPath={getCurrentPath()}
         ></Nav_item>
       );
@@ -121,6 +123,7 @@ function Nav_item({ item, css, currentPath }) {
             </span>
           ) : null}
         </a>
+        {/* nested nav */}
         {item.child && isOpen && (
           <ul ref={nestedRef} className={S.navList_nested}>
             {item.child.map((nestedLink, nestedKey) => {

@@ -13,56 +13,35 @@ export const nav = [
     link: "/",
     icon: <Home_icon></Home_icon>,
   },
+
   {
-    title: "Présentation",
-    link: "/presentation",
-    icon: <AccountCircle></AccountCircle>,
-  },
-  {
-    title: "Soins",
-    link: "/soins",
-    icon: <EnergyIcon></EnergyIcon>,
+    title: "Demo",
+    link: "/demo",
+    icon: null,
     child: [
       {
-        title: "Thérapie Energetique",
-        link: "/soins/energie",
+        title: "Navigation",
+        link: "/navigation",
       },
       {
-        title: "Soins de dégagement",
-        link: "/soins/degagement",
+        title: "Guide.js",
+        link: "/guides",
       },
       {
-        title: "Liens transgénérationelle",
-        link: "/soins/transgenerationelle",
-      },
-      {
-        title: "psychanaliste",
-        link: "/soins/psychanaliste",
-      },
-      {
-        title: "kinesiologie",
-        link: "/soins/kinesiologie",
-      },
-      {
-        title: "Electrosensible",
-        link: "/soins/ondes",
+        title: "Radial Chart",
+        link: "/guides",
       },
     ],
   },
-  {
-    title: "menhir",
-    link: "/menhir",
-    icon: <StoneIcon></StoneIcon>,
-  },
-  {
-    title: "sourcier",
-    link: "/sourcier",
-    icon: <WaterOutline></WaterOutline>,
-  },
 
   {
-    title: "stage",
-    link: "/stage",
-    icon: <Learn_icon></Learn_icon>,
+    title: "Parcours",
+    link: "/parcours",
+    icon: null,
+  },
+  {
+    title: "Projet",
+    link: "/parcours",
+    icon: null,
   },
 ];

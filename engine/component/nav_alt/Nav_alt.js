@@ -1,9 +1,8 @@
 import Link from "next/link";
 import React, { useContext } from "react";
-import { ModalContext } from "../../../engine/context/modal/ModalProvider";
+import { ModalContext } from "../../context/modal/ModalProvider";
 import Portal from "../../utils/portal";
 import Navigation from "../navigation/Navigation";
-import Style_mobil from "../navigation/Nav_mobil.module.scss";
 
 import S from "./Nav_alt.module.scss";
 
@@ -26,7 +25,7 @@ export default function Nav_alt({ children }) {
             </div>
           </header>
           <section className={S.nav_alt}>
-            <Navigation css={Style_mobil}></Navigation>
+            <Navigation css="isMobil"></Navigation>
           </section>
         </div>
       </div>
