@@ -1,0 +1,83 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
+
+.nav {
+  @include flex(column, nowrap, center, flex-end);
+  flex: 1;
+  width: 100%;
+
+  .navList {
+    @include flex(column, nowrap, center, space-between);
+    width: 100%;
+    &_item {
+      @include flex(column, nowrap, center, space-between);
+
+      .navList_link {
+        @include flex(row-reverse, nowrap, flex-start, center);
+
+        font-size: 1.125rem;
+        line-height: 1.375rem;
+        color: $black;
+        padding: spacing(2) 0;
+        opacity: 0;
+        animation-name: right_TO_origin;
+        animation-fill-mode: both;
+        animation-duration: $shortTime;
+        animation-delay: calc(var(--i) * 0.1s);
+        transition: $shortTime;
+
+        svg {
+          margin: 0 0 0 spacing(3);
+          min-width: 1.5rem;
+          min-height: 1.5rem;
+        }
+
+        &:hover {
+          background-color: $blue;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .navList_nested {
+    @include flex(column, wrap, center, center);
+    z-index: 500;
+    margin-top: spacing(1);
+
+    &_item {
+      width: 100%;
+      transition: $shortTime;
+      @include flex(row, wrap, flex-end, center);
+      border-bottom: 1px solid $grey;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: $blue;
+
+        .navList_nested_link {
+          color: $light;
+        }
+      }
+    }
+    &_link {
+      padding: spacing(0) spacing(9) spacing(0) 0;
+      color: $light;
+      text-transform: capitalize;
+      font-size: 1rem;
+      color: $text_black_smooth;
+      width: 100%;
+      line-height: 2rem;
+      color: $black;
+      animation-name: right_TO_origin;
+      animation-fill-mode: both;
+      animation-duration: $shortTime;
+      animation-delay: calc(var(--i) * 0.1s);
+      transition: $shortTime;
+    }
+  }
+}

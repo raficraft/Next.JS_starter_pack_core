@@ -1,0 +1,215 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
+
+$size-arrowrapper: 50px;
+$size-arrow: 20%;
+$rotate-arrow: 45deg;
+$rotate-arrow2: -45deg;
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 90vh;
+  height: 100%;
+  flex: 1;
+  width: 90vw;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+
+  &_marquise {
+    position: relative;
+    //  margin : auto;
+    z-index: 40;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 95%;
+    width: 90%;
+  }
+
+  &_container {
+    position: relative;
+    z-index: 50;
+    transform: translate3d(0, 0, 0);
+    display: flex;
+    height: 100%;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &_prev,
+  &_next {
+    position: absolute;
+    content: "";
+    width: $size-arrowrapper;
+    height: $size-arrowrapper;
+    top: 0;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 100;
+    top: calc(50% - ($size-arrowrapper / 2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+    border: 2px solid rgb(191, 191, 191);
+    transition: 0.3s;
+
+    @media screen and (max-width: 1330px) {
+      display: none;
+    }
+  }
+
+  &_next {
+    right: 1rem;
+    box-shadow: 2px 2px 2px 1px rgba(61, 61, 61, 0.2);
+  }
+
+  &_prev {
+    left: 1rem;
+    box-shadow: 2px 2px 2px 1px rgba(61, 61, 61, 0.2);
+  }
+
+  &_prev::before,
+  &_prev::after {
+    position: absolute;
+    content: "";
+    width: calc(100% / 2);
+    height: $size-arrow;
+    border-radius: 0 3px 3px 0px;
+  }
+
+  &_prev::before {
+    background-color: rgba(150, 150, 150, 0.9);
+    transform-origin: bottom left;
+    transform: rotate($rotate-arrow);
+    top: calc(50% - (40% / 2));
+    left: 20%;
+  }
+
+  &_prev::after {
+    background-color: rgba(79, 79, 79, 0.9);
+    transform-origin: top left;
+    transform: rotate($rotate-arrow2);
+    top: calc(50% - (0% / 2));
+    left: 20%;
+  }
+
+  &_next::before,
+  &_next::after {
+    position: absolute;
+    content: "";
+    width: calc(100% / 2);
+    height: $size-arrow;
+    z-index: 100;
+    border-radius: 3px 0px 0px 3px;
+  }
+
+  &_next::before {
+    background-color: rgba(79, 79, 79, 0.9);
+    transform-origin: bottom right;
+    transform: rotate($rotate-arrow);
+    top: calc(50% - (10% / 2));
+    left: 16%;
+    z-index: 105;
+  }
+
+  &_next::after {
+    background-color: rgba(150, 150, 150, 0.9);
+    transform-origin: top right;
+    transform: rotate($rotate-arrow2);
+    top: calc(50% - (27% / 2));
+    left: 16%;
+    z-index: 102;
+  }
+
+  &_prev:hover,
+  &_next:hover {
+    transform: scale(1.2);
+  }
+
+  footer {
+    width: 100%;
+    @include flex(row, wrap, center, center);
+    margin: 0.5rem 0 0;
+    .paginate {
+      @include flex(row, wrap, center, center);
+      &_button {
+        cursor: pointer;
+        transition: 0.3s;
+        svg {
+          color: red;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .number {
+        background-color: $black;
+        @include flex(row, wrap, center, center);
+        margin: 0 1rem;
+        padding: 0.25rem 1rem;
+        p {
+          margin: 0;
+          color: white;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.closeParent {
+  content: "";
+  @include size(rem(32), rem(32));
+  display: block;
+  cursor: pointer;
+  background-color: #95a5a6;
+  border-radius: 50%;
+  transition: $shortTime;
+  position: absolute;
+  z-index: 500;
+  top: -16px;
+  right: -16px;
+
+  span,
+  span::before,
+  span::after {
+    position: absolute;
+    @include size(20px, rem(2));
+    background-color: white;
+    content: " ";
+    pointer-events: none;
+    top: centerAbsolute(2px);
+    left: centerAbsolute(20px);
+    display: block;
+    transition: $shortTime;
+    transform-origin: 50% 50%;
+  }
+
+  span {
+    background-color: transparent;
+  }
+
+  &:hover {
+    background-color: #e67e22;
+    transform: rotate(180deg);
+  }
+
+  span::before {
+    transform: translateY(0) rotate(45deg);
+  }
+  span::after {
+    transform: translateY(0) rotate(-45deg);
+  }
+}

@@ -1,0 +1,127 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
+
+.nav {
+  @include flex(row, wrap, flex-start, center);
+  flex: 1 0 auto;
+  padding: spacing(1);
+  .navList {
+    @include flex(row, wrap, space-between, center);
+    width: 100%;
+    margin: 0;
+    &_item {
+      @include flex(row, wrap, center, center);
+      margin: 0 spacing(2);
+      position: relative;
+      text-transform: capitalize;
+      .navList_link {
+        position: relative;
+        z-index: 100;
+        @include flex(row, wrap, center, center);
+        margin: 0 spacing(1);
+        font-weight: 600;
+        font-size: 1rem;
+        color: $text_black_smooth;
+        transition: $shortTime;
+        padding: spacing(0.5) spacing(1.25);
+        height: 100%;
+        width: 100%;
+        .dropArrow {
+          @include flex(column, wrap, center, center);
+          margin: 0 0 0 spacing(1);
+          font-size: 3rem;
+          transition: 0.3s;
+          svg {
+            fill: $black;
+            margin: 0;
+            //@include size(2rem, 2rem);
+            font-size: 5rem;
+          }
+        }
+
+        svg {
+          margin-top: -2px;
+          margin-right: spacing(2);
+          @include size(1.5rem, 1.5rem);
+        }
+
+        &:before {
+          @include size(0, 100%);
+          z-index: -1;
+          background-color: $yellow;
+          border-radius: $smallRadius;
+          @include emptyContent;
+        }
+
+        &:hover {
+          color: white;
+        }
+
+        &:hover:before {
+          padding: spacing(0.5) spacing(1.25);
+          animation-name: zero_TO_full;
+          animation-fill-mode: both;
+          animation-duration: $shortTime;
+        }
+      }
+      [data-currentpath="true"] {
+        color: white;
+        background-color: $blue;
+        &:before {
+          background-color: $blue;
+          padding: spacing(0.5) spacing(1.25);
+          animation-name: zero_TO_full;
+          animation-fill-mode: both;
+          animation-duration: $shortTime;
+        }
+        svg {
+          fill: white !important;
+        }
+      }
+
+      [data-isdropdown="true"] .dropArrow {
+        transform: rotate(180deg);
+        svg {
+          fill: white;
+        }
+      }
+    }
+  }
+
+  .navList_nested {
+    @include flex(column, wrap, center, flex-start);
+    position: absolute;
+    top: 100%;
+    background-color: $light;
+    border: 1px solid $grey;
+    z-index: 500;
+    margin-top: spacing(1);
+    width: 160%;
+
+    &_item {
+      transition: $shortTime;
+      display: flex;
+      width: 100%;
+
+      &:hover {
+        background-color: $blue;
+
+        .navList_nested_link {
+          color: $light;
+        }
+      }
+    }
+    &_link {
+      padding: spacing(0.5) spacing(2);
+      color: $light;
+      text-transform: capitalize;
+      font-weight: 600;
+      font-size: 1rem;
+      color: $text_black_smooth;
+      min-width: 100%;
+      @include flex(column, wrap, center, center);
+      margin: spacing(0.5) spacing(0);
+    }
+  }
+}

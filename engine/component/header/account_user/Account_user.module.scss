@@ -1,0 +1,94 @@
+@import "./../../../../Sass/abstract/function.scss";
+@import "./../../../../Sass/abstract/variables.scss";
+@import "./../../../../Sass/abstract/animation.scss";
+
+.user_account {
+  @include flexCenter;
+  border-left: 1px solid $grey;
+  padding-left: calc(3 * #{$space});
+
+  .pseudo {
+    @include flex(row, wrap, center, center);
+    margin: 0 1.5rem 0rem 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    color: $text_black;
+    cursor: pointer;
+    background: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 100;
+    text-transform: capitalize;
+
+    &:before {
+      @include emptyContent;
+      border-radius: $smallRadius;
+      @include size(0, 100%);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:hover:before {
+      background-color: $green;
+      animation-name: zero_TO_full;
+      animation-fill-mode: both;
+      animation-duration: $shortTime;
+      padding: calc(0.5 * #{$space}) calc(1.25 * #{$space});
+    }
+  }
+  .btn {
+    @include flex(row, wrap, center, center);
+    margin: 0 1.5rem 0rem 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    color: $text_black;
+    cursor: pointer;
+    background: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 100;
+
+    &:before {
+      @include emptyContent;
+      background-color: $blue;
+      border-radius: $smallRadius;
+      @include size(0, 100%);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:hover:before {
+      animation-name: zero_TO_full;
+      animation-fill-mode: both;
+      animation-duration: $shortTime;
+      padding: calc(0.5 * #{$space}) calc(1.25 * #{$space});
+    }
+  }
+  .btn:last-child {
+    margin: 0;
+  }
+
+  .signup {
+    &:before {
+      background-color: $green;
+    }
+  }
+  .signin {
+    &:before {
+      background-color: $blue;
+    }
+  }
+  .logout {
+    &:before {
+      background-color: red;
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
+
+.aside_link {
+  position: fixed;
+  @include flex(column, nowrap, center, center);
+  max-width: 3rem;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1500;
+  left: 0;
+
+  &[data-show="false"] {
+    left: -3rem;
+  }
+  &[data-show="true"] {
+    animation-name: left_TO_origin;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+  }
+
+  &_container {
+    span {
+      @include size(3rem, 3rem);
+      @include flex(column, nowrap, center, center);
+      transition: 0.3s;
+      cursor: pointer;
+      svg {
+        font-size: 2.5rem;
+        padding: 0.125rem;
+        color: white;
+      }
+
+      &:hover {
+        filter: brightness(1.4);
+      }
+    }
+  }
+
+  .mobil_toggle {
+    @include size(1.25rem, 2.5rem);
+    position: absolute;
+    content: "";
+    background-color: rgb(160, 160, 160);
+    right: -1.25rem;
+    @include flex(column, nowrap, center, center);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: spacing(1) 0;
+
+    pointer-events: all;
+    cursor: pointer;
+    border: none;
+
+    .dotted_menu,
+    .dotted_menu:before,
+    .dotted_menu:after {
+      @include flex(column, nowrap, center, center);
+      @include circle();
+      @include size(4px, 4px);
+      content: "";
+      background-color: black;
+      position: absolute;
+    }
+
+    .dotted_menu:before {
+      top: -8px;
+    }
+    .dotted_menu:after {
+      top: 8px;
+    }
+  }
+}

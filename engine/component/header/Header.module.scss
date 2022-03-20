@@ -1,0 +1,56 @@
+@import "./../../../Sass/abstract/function.scss";
+@import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
+
+.wrapper {
+  @include flex(row, nowrap, center, center);
+  background-color: rgb(255, 255, 255);
+
+  position: relative;
+  padding: spacing(2) 0 spacing(2) 0;
+  border-bottom: 5px solid $beaver;
+  box-shadow: $standartShadow;
+  z-index: 100;
+  .content {
+    @include flex(row, wrap, space-between, center);
+
+    .home_button {
+      @include flexCenter;
+      transition: $shortTime;
+      position: relative;
+      padding-right: calc(2 * #{$space});
+
+      &:hover svg {
+        color: $red;
+        transform: scale(1.05);
+      }
+
+      svg {
+        font-size: 3rem;
+        color: $black;
+        width: 2rem;
+        height: 2rem;
+      }
+
+      @media screen and (min-width: 767px) {
+        @include flex(row, wrap, flex-start, center);
+        &:after {
+          @include emptyContent;
+          width: 1px;
+          height: 100%;
+          background-color: $grey;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .nav_right {
+    @include flex(row, wrap, flex-end, center);
+    position: relative;
+
+    .select_lang {
+      margin: 0 2rem 0 0;
+    }
+  }
+}

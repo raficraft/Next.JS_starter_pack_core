@@ -1,0 +1,21 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
+
+.content_target {
+}
+
+.container_ligthbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: spacing(6);
+  max-height: 90vh;
+  height: 100%;
+
+  img {
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,40 @@
+@import "./../..//Sass/abstract/function";
+@import "./../../Sass/abstract/variables";
+
+.wrapper {
+  @include flex(row, nowrap, space-between, center);
+  width: var(--container_width);
+
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 2rem);
+  }
+
+  gap: 2rem;
+  margin: 3rem 0;
+  flex: 1;
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    @include flex(row, wrap, space-between, center);
+    gap: 0;
+  }
+
+  aside {
+    @include flex(column, wrap, center, center);
+    align-self: stretch;
+    max-width: 30%;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media screen and (min-width: 850px) {
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 1px solid $grey;
+    }
+  }
+}
+
+.content_col {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+}

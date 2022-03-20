@@ -1,0 +1,63 @@
+@import "./../../../../Sass/abstract/function";
+@import "./../../../../Sass/abstract/variables";
+
+.wrapper {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  @include flex(row, nowrap, flex-start, flex-start);
+  margin: 1.5rem 0;
+
+  cursor: pointer;
+
+  .content {
+    padding: 1rem;
+    border-radius: $smallRadius;
+    border: 1px solid $grey;
+    flex: 1;
+    background-color: wheat;
+    filter: $dropShadow;
+
+    .review {
+      margin: 0 0 1rem 0;
+    }
+
+    .date {
+      margin: 0;
+      font-style: italic;
+    }
+  }
+}
+
+.filter {
+  @include flex(row, nowrap, space-between, center);
+  border-bottom: 1px solid $grey;
+  padding: 0 0 1rem 0;
+  &_select {
+    display: flex;
+    select {
+      margin: 0 0 0 1rem;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.content_review {
+  background-color: white;
+  padding: 0.5rem 1rem;
+  @include flex(row, nowrap, space-between, center);
+  .select {
+    @include flex(row, nowrap, space-between, center);
+    label {
+      margin: 0 0.25rem 0 0;
+    }
+    p {
+      margin: 0 0 0 0.5rem;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}

@@ -1,0 +1,74 @@
+.inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  @include flex(row, wrap, center, center);
+  pointer-events: none;
+  box-shadow: $standartShadow;
+  z-index: 5;
+
+  @media screen and (max-width: 767px) {
+    @include flex(row, wrap, space-between, center);
+  }
+
+  &_content {
+    @include flex(row, wrap, center, center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    // mix-blend-mode: multiply;
+  }
+
+  .logo {
+    max-width: 200px;
+    width: 100%;
+    animation-name: pendule;
+    animation-fill-mode: both;
+    animation-duration: 1.2s;
+    transform-origin: top center;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    filter: drop-shadow(0px 0px 14px #000000);
+    margin: 0 1rem 0 0;
+    cursor: hand;
+    pointer-events: all;
+    @media screen and (max-width: 1025px) {
+      max-width: 140px;
+    }
+    @media screen and (max-width: 541px) {
+      max-width: 100px;
+    }
+    @media screen and (max-width: 380px) {
+      max-width: 70px;
+      margin: 0 0.5rem 0 0;
+    }
+  }
+
+  .heroes_title {
+    @include flex(column, wrap, center, center);
+    .title,
+    .subtitle {
+      text-shadow: 0 0 5px black, 0 0 10px black, 0 0 15px black;
+      font-family: "myFont";
+      @include text(7vw, 1.2, bold);
+      color: white;
+      text-align: center;
+      @media screen and (max-width: 769px) {
+        @include text(10vw, 1, bold);
+      }
+    }
+    .title {
+      margin: 0 0 spacing(2) 0;
+    }
+    .subtitle {
+      margin: 0;
+    }
+  }
+}

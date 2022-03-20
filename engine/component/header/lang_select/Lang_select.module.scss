@@ -1,0 +1,108 @@
+@import "./../../../../Sass/abstract/function.scss";
+@import "./../../../../Sass/abstract/variables.scss";
+@import "./../../../../Sass/abstract/animation.scss";
+
+.lang_select {
+  position: relative;
+  @include flexCenter;
+  margin-right: calc(2 * #{$space});
+
+  svg {
+    @include size(1rem, 1rem);
+    cursor: pointer;
+    transition: $shortTime;
+  }
+
+  &:hover svg {
+    transform: scale(1.2);
+    color: $red;
+  }
+
+  .drop_list {
+    top: 32px;
+    right: -108px;
+    position: absolute;
+    background-color: $light;
+    @include flex(column, nowrap, center, center);
+    padding: calc(1 * #{$space}) calc(4 * #{$space});
+    z-index: 100;
+    border: 1px solid $grey;
+    //box-shadow: $standartShadow;
+    filter: drop-shadow(0px 0px 4px rgb(121, 121, 121));
+    opacity: 0;
+    animation-name: translate_by_left;
+    animation-duration: $shortTime;
+    animation-fill-mode: both;
+
+    &:before {
+      @include emptyContent;
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $grey;
+      border-left: 10px solid transparent;
+      top: -10px;
+      right: 7px;
+      z-index: -1;
+    }
+    &:after {
+      @include emptyContent;
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $light;
+      border-left: 8px solid transparent;
+      top: -8px;
+      right: 9px;
+      z-index: 100;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      width: 140px;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: calc(1.5 * #{$space}) 0;
+      color: grey;
+      cursor: pointer;
+      text-transform: uppercase;
+      position: relative;
+      &:hover {
+        color: $black;
+      }
+      &.active {
+        color: $red;
+      }
+      svg {
+        position: absolute;
+        right: 0;
+      }
+    }
+  }
+}
+
+@keyframes translate_by_left {
+  0% {
+    opacity: 0;
+    right: -108px;
+  }
+  100% {
+    opacity: 1;
+    right: -8px;
+  }
+}
+
+@keyframes translate_by_right {
+  0% {
+    opacity: 0;
+    left: 0;
+  }
+  100% {
+    opacity: 1;
+    left: -8px;
+  }
+}

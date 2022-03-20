@@ -1,0 +1,311 @@
+@import "./function";
+@import "./variables";
+@import "./animation";
+
+.textWarning {
+  color: rgb(223, 80, 80);
+}
+
+.primary_content {
+  width: var(--container_width);
+
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 2rem);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.bloc_input {
+  @include flex(column, nowrap, center, flex-start);
+  margin: 0.5rem 0;
+  position: relative;
+
+  @media screen and (max-width: 700px) {
+    @include flex(row, wrap, center, center);
+  }
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    border: 2px solid $grey;
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+    width: 100%;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+
+  textarea {
+    min-height: 260px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  label {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 0 $space 0;
+
+    @media screen and (max-width: 850px) {
+      text-align: center;
+    }
+  }
+}
+
+.bloc_input_row {
+  @include flex(row, wrap, flex-start, center);
+  margin: 0.5rem 0;
+  input[type="text"],
+  input[type="password"] {
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    border: 2px solid $grey;
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+    width: 100%;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+
+  label {
+    font-weight: bold;
+    margin: 0 2rem 0 0;
+  }
+}
+
+.bloc_checked {
+  @include flex(row, nowrap, flex-start, center);
+  margin: calc(#{$space} * 1) 0 0 0;
+
+  input {
+    margin-right: calc(#{$space} * 1.5);
+  }
+}
+
+.btn_primary {
+  height: 2rem;
+  color: $light;
+  border: none;
+  border-radius: $smallRadius;
+  padding: calc(#{$space} * 3);
+  font-weight: bold;
+  @include flexCenter();
+  transition: $shortTime;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_sub {
+  background-color: $blue;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_alert {
+  background-color: $red;
+
+  &:hover {
+    background-color: lighten($red, 10%);
+  }
+}
+
+.btn_big {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $light;
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 1.5rem 0;
+  transition: $shortTime;
+}
+
+.input_infoBubble {
+  border: 1px solid $grey_hard;
+  background-color: $light;
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 10px;
+  padding: calc(#{$space} * 1.25);
+  @include flex(row, nowrap, center, center);
+  z-index: 10;
+  box-shadow: $lightShadow;
+  border-radius: 5px;
+  .icon {
+    @include size(1.75rem, 1.75rem);
+    @include flex(row, nowrap, center, center);
+    background-color: $yellow;
+    border-radius: 3px;
+    margin: 0 $space 0 0;
+    svg {
+      color: $light;
+      font-size: 1rem;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+  &:before,
+  &:after {
+    @include emptyContent();
+    display: inline-block;
+  }
+  &:before {
+    height: 0;
+    width: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(255, 255, 255);
+    border-left: 10px solid transparent;
+    z-index: 500;
+    left: 16px;
+    top: -10px;
+  }
+
+  &:after {
+    height: 0;
+    width: 0;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $grey_hard;
+    border-left: 12px solid transparent;
+    z-index: 400;
+    left: 14px;
+    top: -12px;
+  }
+}
+
+.relative {
+  position: relative;
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.contentEditable_wrapper {
+  @include flex(row, nowrap, center, flex-start);
+  margin: 0.75rem 0;
+  position: relative;
+  width: 100%;
+
+  .edit_item {
+    margin: 0;
+    width: 100%;
+    padding: 0.75rem;
+    color: lighten($black, 45%);
+    box-sizing: border-box;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-radius: $smallRadius;
+      border: 1px solid $grey;
+      box-shadow: $lightShadow;
+      outline-color: rgb(167, 167, 167);
+    }
+  }
+  &:hover {
+    .dotMenu {
+      opacity: 1;
+    }
+  }
+
+  button {
+    align-self: center;
+    background-color: $red;
+    color: white;
+    border: none;
+    margin: 0 1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 5px;
+    box-shadow: $lightShadow;
+    transition: $shortTime;
+
+    &:hover {
+      background-color: lighten($red, 10%);
+    }
+  }
+}
+
+.dotMenu {
+  position: relative;
+  margin-right: 0.5rem;
+  @include flex(row, nowrap, center, center);
+  content: "";
+  width: 24px;
+  height: 32px;
+  box-sizing: content-box;
+  border: 1px solid $grey;
+  opacity: 0;
+  transition: $shortTime;
+  box-shadow: $lightShadow;
+
+  &:hover {
+    cursor: pointer;
+    border-radius: $smallRadius;
+    opacity: 1;
+  }
+  &_item,
+  &_item:before,
+  &_item:after {
+    content: "";
+    @include size(4px, 4px);
+    @include circle();
+    background-color: darken(grey, 5%);
+  }
+
+  &_item:before,
+  &_item:after {
+    @include emptyContent();
+  }
+
+  .dot_left {
+    display: block;
+    margin-right: 0.0625rem;
+    &:before {
+      top: 0.375rem;
+    }
+
+    &:after {
+      bottom: 0.375rem;
+    }
+  }
+
+  .dot_right {
+    margin-left: 0.0625rem;
+    &:before {
+      top: 0.375rem;
+    }
+
+    &:after {
+      bottom: 0.375rem;
+    }
+  }
+}
+
+.visible {
+  opacity: 1;
+}

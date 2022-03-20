@@ -1,0 +1,58 @@
+@import "./../../../../Sass/abstract/function";
+@import "./../../../../Sass/abstract/variables";
+
+.editProfil {
+  @include flex(column, nowrap, space-between, flex-start);
+  padding-bottom: 0;
+  width: 100%;
+  background-color: $light;
+  padding: 0 2rem;
+
+  form {
+    width: 100%;
+    @include flex(row, wrap, space-between, center);
+    margin: 2rem 0;
+    border: 3px solid $grey;
+    padding: 1rem 1.5rem;
+
+    .errorText {
+      margin: 1rem 0;
+      color: $red;
+
+      @media screen and (max-width: 850px) {
+        text-align: center;
+      }
+    }
+  }
+
+  .form_content {
+    @include flex(row, wrap, space-between, center);
+    width: 100%;
+
+    @media screen and (max-width: 850px) {
+      @include flex(column, wrap, center, center);
+    }
+  }
+
+  footer {
+    @include flex(row, nowrap, flex-end, center);
+    margin: 1rem 0 0 0;
+    width: 100%;
+    @media screen and (max-width: 1439px) {
+      width: calc(100% - 4rem);
+    }
+  }
+
+  .bloc_input {
+    flex: 1;
+    margin: 1rem 0;
+    label {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 250px;
+    }
+  }
+}

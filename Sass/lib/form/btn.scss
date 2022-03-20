@@ -1,0 +1,46 @@
+.btn_primary {
+  height: 2rem;
+  color: $light;
+  border: none;
+  border-radius: $smallRadius;
+  padding: calc(#{$space} * 3);
+  font-weight: bold;
+  @include flexCenter();
+  transition: $shortTime;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_sub {
+  background-color: $blue;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_alert {
+  background-color: $red;
+
+  &:hover {
+    background-color: lighten($red, 10%);
+  }
+}
+
+.btn_big {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $light;
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 1.5rem 0;
+  transition: $shortTime;
+}

@@ -1,0 +1,24 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
+
+.wrapper {
+  background-image: url("/assets/bg/texture_02.png");
+  width: 100%;
+  position: relative;
+  @include flexCenter();
+  box-shadow: $standartShadow;
+
+  .content {
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    height: 60vh;
+    content: "";
+    border-bottom: 5px solid $beaver;
+
+    @media screen and (max-width: 769px) {
+      height: 40vh;
+    }
+  }
+}

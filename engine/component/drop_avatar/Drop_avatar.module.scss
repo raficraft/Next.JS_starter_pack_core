@@ -1,0 +1,26 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+
+.preview {
+  &_avatar {
+    @include flex(column, wrap, center, center);
+    padding-bottom: calc(#{$space} * 3);
+    border-bottom: 1px solid $grey;
+
+    &__trigger {
+      background-color: cadetblue;
+      @include circle();
+      background-image: url("./../../../assets/UI/checkerboard-texture.jpg");
+      border: 5px solid $light;
+      transition: $shortTime;
+      cursor: pointer;
+      &:hover {
+        border: 5px solid $red;
+      }
+    }
+
+    .errorText {
+      margin: 0.5rem 0 0.25rem 0;
+    }
+  }
+}

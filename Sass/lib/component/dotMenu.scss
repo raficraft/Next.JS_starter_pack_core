@@ -1,0 +1,86 @@
+.dotMenu {
+  position: relative;
+  margin-right: 0.5rem;
+  @include flex(row, nowrap, center, center);
+  content: "";
+  width: 20px;
+  height: 30px;
+  box-sizing: content-box;
+  border: 1px solid $grey;
+  opacity: 1;
+  transition: $shortTime;
+  box-shadow: $lightShadow;
+  background-color: $light;
+
+  &:hover {
+    cursor: pointer;
+    border-radius: $smallRadius;
+    opacity: 1;
+  }
+  &_item,
+  &_item:before,
+  &_item:after {
+    content: "";
+    @include size(4px, 4px);
+    @include circle();
+    background-color: darken(grey, 5%);
+  }
+
+  &_item:before,
+  &_item:after {
+    @include emptyContent();
+  }
+
+  .dot_left {
+    display: block;
+    margin-right: 0.0625rem;
+    &:before {
+      top: 0.375rem;
+    }
+
+    &:after {
+      bottom: 0.375rem;
+    }
+  }
+
+  .dot_right {
+    margin-left: 0.0625rem;
+    &:before {
+      top: 0.375rem;
+    }
+
+    &:after {
+      bottom: 0.375rem;
+    }
+  }
+  &_sub {
+    position: absolute;
+    //right: calc(100% + 0.5rem);
+    right: 0;
+    top: 0;
+    &--content {
+      background-color: aqua;
+    }
+  }
+}
+
+.dotMenu_container {
+  display: block;
+  @include size(32px, 100%);
+  content: "";
+  .dotMenu_sub {
+    background-color: white;
+    border-radius: $smallRadius;
+    filter: $dropShadow;
+    button {
+      border: none;
+      background: none;
+      padding: 0.5rem 0.5rem;
+      width: 100%;
+      &:hover {
+        background: $blue;
+        color: white;
+      }
+    }
+  }
+}

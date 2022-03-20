@@ -1,0 +1,99 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
+
+.wrapper {
+  @include flex(column, nowrap, flex-start, center);
+  @include size(100%, 100vh);
+  background-color: $light;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 10000;
+
+  .content {
+    position: relative;
+    @include flex(column, nowrap, flex-start, center);
+    flex: 1;
+    width: var(--container_width);
+    @media screen and (max-width: 1439px) {
+      width: calc(100% - spacing(8));
+    }
+    header {
+      position: relative;
+      @include flex(row, nowrap, flex-end, center);
+      min-width: 100%;
+      height: 32px;
+      padding-top: spacing(6);
+      padding-bottom: spacing(3);
+      box-sizing: content-box;
+
+      a {
+        font-size: 1.25rem;
+      }
+      &:after {
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        margin: auto;
+        content: "";
+        background-color: $grey;
+      }
+    }
+
+    .nav_alt {
+      @include flex(column, nowrap, center, flex-end);
+      flex: 1;
+      width: 100%;
+    }
+
+    $cross_width: 20px;
+    $cross_height: 2px;
+
+    .cross_container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: spacing(3);
+      @include size(32px, 32px);
+      z-index: 100;
+      cursor: pointer;
+
+      .cross,
+      .cross:before,
+      .cross:after {
+        display: flex(row, wrap, center, center);
+        @include size(20px, 2px);
+        z-index: -1;
+        background-color: $black;
+        content: " ";
+        transform-origin: center;
+      }
+      .cross {
+        @include size(20px, 0px);
+        background-color: none;
+        transition: $shortTime;
+
+        &:hover,
+        &:active {
+          transform: scale(1.1) rotate(180deg);
+        }
+      }
+
+      .cross:after,
+      .cross:before {
+        position: absolute;
+        margin-top: calc(#{$cross_height} / -2);
+      }
+
+      .cross:before {
+        transform: rotate(45deg);
+      }
+      .cross:after {
+        transform: rotate(315deg);
+      }
+    }
+  }
+}

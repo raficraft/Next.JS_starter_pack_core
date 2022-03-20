@@ -1,0 +1,100 @@
+@import "./../../../../../Sass/abstract/function";
+@import "./../../../../../Sass/abstract/variables";
+
+.list_review {
+  @include flex(row, wrap, space-between, flex-start);
+  padding: spacing(6) spacing(4);
+  max-width: 100%;
+  width: 100%;
+  background-color: $light;
+  filter: drop-shadow(0px 0px 4px lighten($black, 50%));
+  border-radius: $smallRadius;
+
+  .paginate_container {
+    width: 100%;
+    @include flex(column, wrap, space-between, center);
+  }
+
+  &_item {
+    background-color: $light;
+    padding: spacing(2) spacing(3);
+    margin: spacing(4) spacing(1);
+    border-radius: 8px;
+    background-color: wheat;
+    max-width: calc(50% - spacing(4));
+    width: 100%;
+
+    @media screen and (max-width: 769px) {
+      max-width: 100%;
+    }
+
+    .item_rate {
+      svg {
+        color: $yellow;
+        font-size: 1.25rem;
+      }
+    }
+
+    .item_comment {
+      margin: 0 0 spacing(2) 0;
+    }
+
+    .item_name {
+      text-align: right;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+  .paginate {
+    max-width: 100%;
+    @include flex(row, wrap, center, center);
+
+    button {
+      height: 2rem;
+      min-width: 2rem;
+      font-size: 1rem;
+      margin: 0.5rem;
+      color: $black;
+      background-color: $grey;
+      border: none;
+      border-radius: 5px;
+      filter: $dropShadow;
+      transition: 0.3s;
+
+      &[data-current="true"] {
+        background-color: $blue;
+        color: white;
+      }
+
+      &:hover {
+        background-color: $yellow;
+        color: white;
+      }
+
+      &:disabled:hover {
+        background-color: $grey;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.pa3 {
+  padding: spacing(6) 0;
+}
+
+.paginate_header {
+  @include flex(row, wrap, space-between, center);
+  width: 100%;
+  margin: 0 0 1rem 0;
+
+  select {
+    margin: 0 0 0 0.5rem;
+  }
+  p {
+    align-self: flex-end;
+    margin: 0 0 0 1rem;
+  }
+}

@@ -1,0 +1,71 @@
+@import "./../../../../Sass/abstract/function";
+@import "./../../../../Sass/abstract/variables";
+@import "./../../../../Sass/abstract/animation";
+
+.wrapper {
+  width: var(--container_width);
+  background-color: $light;
+  padding: spacing(3) spacing(6);
+  animation-name: bottom_TO_origin;
+  animation-duration: $shortTime;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+
+  @media screen and (max-width: $container_width) {
+    width: 100%;
+  }
+
+  .bloc_input {
+    margin: 2rem 0;
+  }
+
+  .bloc_ratings {
+    @include flex(row, wrap, flex-start, center);
+    > label {
+      width: auto;
+      margin: 0 1rem 0 0;
+      font-weight: bold;
+    }
+    .ratings {
+      float: left;
+      padding: 0 10px 0 0;
+      input {
+        margin: 0;
+      }
+      label {
+        margin: 0;
+      }
+      &:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        visibility: hidden;
+      }
+      &:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+      }
+
+      > input:checked ~ label {
+        color: #ffb806;
+      }
+
+      &:not(:checked) > label:hover,
+      &:not(:checked) > label:hover ~ label {
+        color: #dec717;
+      }
+      > input:checked + label:hover,
+      > input:checked + label:hover ~ label,
+      > input:checked ~ label:hover,
+      > input:checked ~ label:hover ~ label,
+      > label:hover ~ input:checked ~ label {
+        color: #dec717;
+      }
+    }
+  }
+}

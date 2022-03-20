@@ -1,0 +1,90 @@
+@import "./../../../Sass/abstract/function.scss";
+@import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
+
+$sizeClose: 2.5rem;
+
+.wrapper {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  padding: 1rem 0;
+  .content {
+    @include flex(column, wrap, flex-start, flex-start);
+    box-shadow: $standartShadow;
+    border-radius: $mediumRadius;
+    animation-name: bottom_TO_origin;
+    animation-duration: $shortTime;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    max-width: var(--container_width);
+    width: 100%;
+    background-color: $light;
+
+    .header {
+      @include flex(row, wrap, space-between, center);
+      background-color: $black;
+      padding-left: 1rem;
+      width: 100%;
+      border-radius: $mediumRadius $mediumRadius 0 0;
+      h1 {
+        margin: 0;
+        color: $light;
+      }
+
+      .close_modal {
+        @include flex(row, wrap, center, center);
+        @include size(#{$sizeClose}, #{$sizeClose});
+        background-color: red;
+        cursor: pointer;
+        border-radius: 0 $mediumRadius 0 0;
+        border-left: 5px solid darken($red, 10%);
+        transition: $mediumTime;
+        box-sizing: content-box;
+        position: relative;
+        &:hover {
+          border-left-color: $light;
+        }
+      }
+    }
+  }
+}
+
+.revert-anim {
+  animation-name: origin_TO_top;
+  animation-fill-mode: both;
+  animation-duration: $shortTime;
+}
+
+.cross,
+.cross:before,
+.cross:after {
+  @include emptyContent();
+  height: 2px;
+  width: 20px;
+  background-color: white;
+  transform-origin: center;
+  transition: $mediumTime;
+  pointer-events: none;
+}
+
+.cross {
+  background-color: transparent;
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(315deg);
+  }
+}
+
+.close_modal:hover .cross {
+  transform: rotate(180deg);
+}
