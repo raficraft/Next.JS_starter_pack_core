@@ -1,6 +1,6 @@
-@import "./../../../Sass/abstract/function";
-@import "./../../../Sass/abstract/variables";
-@import "./../../../Sass/abstract/animation";
+@import "./../../../../../Sass/abstract/function";
+@import "./../../../../../Sass/abstract/variables";
+@import "./../../../../../Sass/abstract/animation";
 
 .nav {
   @include flex(column, nowrap, center, flex-end);

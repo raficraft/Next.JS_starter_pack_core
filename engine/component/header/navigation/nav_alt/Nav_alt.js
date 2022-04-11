@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext } from "react";
-import { ModalContext } from "../../context/modal/ModalProvider";
-import Portal from "../../utils/portal";
+import { ModalContext } from "../../../../context/modal/ModalProvider";
+import Portal from "../../../../utils/portal";
 import Navigation from "../navigation/Navigation";
 
 import S from "./Nav_alt.module.scss";

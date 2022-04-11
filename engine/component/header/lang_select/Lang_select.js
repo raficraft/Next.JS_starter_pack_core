@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
-import { Check_icon, Language_icon } from "../../../../assets/icons/Icon_svg";
-import { LanguageContext } from "../../../../engine/context/language/LanguageContext";
+import React, { useContext, useEffect } from "react";
+import {
+  Check_icon,
+  Language_icon,
+} from "../../../../public/assets/icons/Icon_svg";
 import { useClickOutside } from "../../../hooks/useClickOutside";
+import { LanguageContext } from "../../../context/language/LanguageContext";
 import S from "./Lang_select.module.scss";
 
 export default function Lang_select() {
   const { lang, change_lang } = useContext(LanguageContext);
-  const { show, setShow, refOutsideClick } = useClickOutside(false);
+  const { show, setShow, refOutsideClick } = useClickOutside(true);
 
   //Manage Lang
   function handle_lang(e) {
@@ -17,6 +20,11 @@ export default function Lang_select() {
   function handle_show() {
     setShow(!show);
   }
+
+  useEffect(() => {
+    console.log(show);
+    console.log(setShow);
+  }, [show]);
 
   return (
     <div className={S.lang_select}>

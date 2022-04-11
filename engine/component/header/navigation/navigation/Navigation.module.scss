@@ -1,6 +1,6 @@
-@import "./../../../Sass/abstract/function";
-@import "./../../../Sass/abstract/variables.scss";
-@import "./../../../Sass/abstract/animation.scss";
+@import "./../../../../../Sass/abstract/function";
+@import "./../../../../../Sass/abstract/variables";
+@import "./../../../../../Sass/abstract/animation";
 
 .nav {
   @include flex(row, wrap, flex-start, center);

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
-import { Logout_icon } from "../../../../assets/icons/Icon_svg";
+import { Logout_icon } from "../../../../public/assets/icons/Icon_svg";
 
 import { AuthContext } from "../../../../engine/context/auth/AuthProvider";
 import { LanguageContext } from "../../../../engine/context/language/LanguageContext";
-import { ModalContext } from "../../../../engine/context/modal/ModalProvider";
+import { ModalContext } from "../../../context/modal/ModalProvider";
 
 import { btnLogin } from "../../../../data/accountForm/accountForm";
 import { errorForm } from "../../../../data/errorForm/errorForm";

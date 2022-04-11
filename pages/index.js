@@ -1,47 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Link from "next/link";
+import { projectData } from "../data/projets/projets";
+import Image from "next/image";
+import useGetImage from "../engine/hooks/files/useGetimage";
 
-import { Home_icon } from "../public/assets/icons/Icon_svg";
-import useMediaQuery from "../engine/hooks/useMediaQueries";
-
-import Navigation from "../engine/component/navigation/Navigation";
-import Hamburger_menu from "../engine/component/header/hamburger_menu/Hamburger_menu";
-
-import S from "./../engine/component/header/Header.module.scss";
-import Style_nav from "../engine/component/navigation/Nav_top.module.scss";
+import S from "./Home.module.scss";
 
 export default function Home() {
-  const isMobil = useMediaQuery("(max-width: 1139px)");
-  const isTablet = useMediaQuery("(min-width: 1140px)");
+  function createCard(type) {
+    const filterData = projectData.filter((data) => data.type === type);
+
+    return filterData.map((project, key) => {
+      return <Card data={project} key={`${key}_${project.type}}`} />;
+    });
+  }
+
   return (
     <>
       <Head>
-        <title>David Michel. Géobiologie Loire 42</title>
-        <meta name="description" content="My heart in my Art" />
+        <title>Raphaêl parodi - developpeur front-end React.js </title>
+        <meta
+          name="description"
+          content="Portfolio de raphaël parodi développeur front-end. Spécialisé en javascript avec react"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className="mainContent">
-        {isTablet && <Navigation css={Style_nav} />}
+        <h1>Contenue</h1>
 
-        {isMobil && (
-          <>
-            <Link href="/" className={S.home_button}>
-              <a className={S.home_button}>
-                <Home_icon />
-              </a>
-            </Link>
+        <section>
+          <h2>Liste des projets</h2>
+          <p>
+            Qui sit duis aliquip ea irure tempor ad labore. Irure exercitation
+            sit officia cillum aliqua ea. Consequat aliquip proident magna
+            officia Lorem enim.
+          </p>
 
-            <div className={S.nav_right}>
-              <Hamburger_menu></Hamburger_menu>
-            </div>
-          </>
-        )}
-        <section className="content">
-          <h1>NEXt.JS Starter Pack</h1>
+          <article>
+            <h2>Projets perso</h2>
+          </article>
+
+          <article>
+            <h2>Projets OpenClassRooms</h2>
+            {createCard("ocr")}
+          </article>
         </section>
       </main>
+    </>
+  );
+}
+
+function Card({ data }) {
+  console.log("WWWWWWWWWWWWWWW", data);
+
+  const [img, loading] = useGetImage([data.img]);
+
+  console.log("yolo", img);
+
+  useEffect(() => {
+    console.log("!!!!!!!!!!!!!!!", img);
+    console.log(loading);
+  }, [img]);
+
+  return (
+    <>
+      {!loading ? (
+        <p>...Loading</p>
+      ) : (
+        <div className={S.test}>
+          <Image
+            src={img[0].src}
+            width={img[0].width}
+            height={img[0].height}
+            style={{ width: "300px" }}
+          ></Image>
+        </div>
+      )}
     </>
   );
 }

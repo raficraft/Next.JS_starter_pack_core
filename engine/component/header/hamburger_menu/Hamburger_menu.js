@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../../../../engine/context/modal/ModalProvider";
-import Nav_alt from "../../nav_alt/Nav_alt";
+import { ModalContext } from "../../../..//engine/context/modal/ModalProvider";
+import Nav_alt from "../navigation/nav_alt/Nav_alt";
 
 import S from "./Hamburger_menu.module.scss";
 

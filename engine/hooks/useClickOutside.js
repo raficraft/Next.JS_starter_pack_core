@@ -14,6 +14,7 @@ export const useClickOutside = (init) => {
   };
 
   useEffect(() => {
+    console.log(refOutsideClick);
     document.addEventListener("click", handleClickOutside, true);
 
     return () => {

@@ -4,6 +4,8 @@ export default function useGetimage(directory) {
   const [loading, setLoading] = useState(true);
   const [filesInfo, setFilesInfo] = useState([]);
 
+  console.log("input hooks", directory);
+
   useEffect(() => {
     const fetchData = async () => {
       const filesArray = [];
@@ -23,17 +25,19 @@ export default function useGetimage(directory) {
 
         try {
           const allFiles = await res.json();
+          //console.log("allFiles", allFiles);
           for (const f of allFiles) {
             const i = await import(`/public/assets/img/${folder}${f}`);
             filesArray.push(i.default);
           }
-          setLoading(false);
+          setLoading(true);
         } catch (error) {
           console.log(error);
         }
       };
 
       for (const folder of directory) {
+        console.log("before init folder", folder);
         await callApi(folder);
       }
       setFilesInfo(filesArray);

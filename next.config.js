@@ -1,6 +1,10 @@
 module.exports = {
   reactStrictMode: true,
 
+  images: {
+    domains: ["github.com"],
+  },
+
   webpack: (config) => {
     config.module.rules.push({
       test: /\.pdf$/,

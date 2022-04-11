@@ -1,14 +1,23 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useRef } from "react";
 
-import { nav } from "../../../data/nav/nav";
-import { useClickOutside } from "../../hooks/useClickOutside";
-import { ModalContext } from "../../context/modal/ModalProvider";
 import { useRouter } from "next/router";
-import { ArrowDown } from "../../../public/assets/icons/Icon_svg";
+import { ArrowDown } from "../../../../..//public/assets/icons/Icon_svg";
 
-import Std from "./Nav_top.module.scss";
+import { useClickOutside } from "../../../..//hooks/useClickOutside";
+import { ModalContext } from "../../../../context/modal/ModalProvider";
+
+import Std from "./Navigation.module.scss";
 import M from "./Nav_mobil.module.scss";
+
+//Data for construct the nav
+import { nav } from "../../../../../data/nav/nav";
+
+/**
+ * @param {String} css value "top" || mobil apply different style . Extendable  style to others
+ * @returns navigation component. HTML structure with UL, LI, A and nested      another nested structure if necessary.*
+ *
+ */
 
 export default function Navigation({ css = "top" }) {
   const S = css === "isMobil" ? M : Std;
@@ -45,6 +54,11 @@ export default function Navigation({ css = "top" }) {
 }
 
 //Embed component
+/**
+ *
+ * @param {*} param0
+ * @returns
+ */
 
 function Nav_item({ item, css, currentPath }) {
   const [isOpen, setIsOpen, nestedRef] = useClickOutside(false);
@@ -81,7 +95,10 @@ function Nav_item({ item, css, currentPath }) {
     for (const link of allLink) {
       link.dataset.currentpath = false;
 
-      if (link.dataset.path === "/" + currentPath) {
+      if (
+        link.dataset.path === "/" + currentPath ||
+        link.dataset.path === "#" + currentPath
+      ) {
         link.dataset.currentpath = true;
       }
     }
@@ -117,13 +134,18 @@ function Nav_item({ item, css, currentPath }) {
         >
           {item.icon}
           {item.title}
+
+          {/* Add arrow for nested nav on link item */}
+
           {item.child ? (
             <span className={S.dropArrow}>
               <ArrowDown></ArrowDown>
             </span>
           ) : null}
         </a>
+
         {/* nested nav */}
+
         {item.child && isOpen && (
           <ul ref={nestedRef} className={S.navList_nested}>
             {item.child.map((nestedLink, nestedKey) => {

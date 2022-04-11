@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useRef, useLayoutEffect } from "react";
 import Link from "next/link";
-import { Home_icon } from "../../../assets/icons/Icon_svg";
+import { Home_icon } from "../../../public/assets/icons/Icon_svg";
 
 import useMediaQuery from "../../hooks/useMediaQueries";
-import Navigation from "../navigation/Navigation";
+import Navigation from "./navigation/navigation/Navigation";
 import Hamburger_menu from "./hamburger_menu/Hamburger_menu";
+import Account_user from "./account_user/Account_user";
+import Lang_select from "./lang_select/Lang_select";
 
 import S from "./Header.module.scss";
-import Style_nav from "../navigation/Nav_top.module.scss";
 
 function Header() {
   const isMobil = useMediaQuery("(max-width: 1139px)");
@@ -15,27 +16,33 @@ function Header() {
 
   return (
     <header className={`${S.wrapper}`}>
-      {/* Header Content */}
       <div className={`${S.content} primary_content`}>
-        {/* Home Button */}
-
-        {isTablet && <Navigation css={Style_nav} />}
-
-        {isMobil && (
+        {/* Header Content */}
+        {isTablet && (
           <>
-            <Link href="/" className={S.home_button}>
-              <a className={S.home_button}>
-                <Home_icon />
-              </a>
-            </Link>
-
-            <div className={S.nav_right}>
-              <Hamburger_menu />
-            </div>
+            <Navigation />
           </>
         )}
+
+        <div className={S.nav_right}>
+          <Lang_select></Lang_select>
+
+          {isTablet && <Account_user></Account_user>}
+          {isMobil && (
+            <>
+              <Link href="/" className={S.home_button}>
+                <a className={S.home_button}>
+                  <Home_icon />
+                </a>
+              </Link>
+
+              <Hamburger_menu></Hamburger_menu>
+            </>
+          )}
+        </div>
+
+        {/* Header Content END */}
       </div>
-      {/* Header Content END*/}
     </header>
   );
 }
